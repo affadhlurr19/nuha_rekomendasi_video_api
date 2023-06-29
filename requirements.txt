@@ -1,4 +1,4 @@
-Flask
+fastapi
 Sastrawi
 scikit-learn
 nltk
