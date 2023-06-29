@@ -1,11 +1,6 @@
-# from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request
 
-# app = FastAPI()
-
-from flask import Flask, request
-
-
-app = Flask(__name__)
+app = FastAPI()
 
 #mendapatkan data artikel dari api
 import requests
@@ -111,17 +106,9 @@ tfidf_matrix = vectorizer.fit_transform(documents)
 # Menghitung matrix cosine similarity 
 cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix) 
 
-# @app.get('/recommend/video')
-# def get_recommendation(request: Request) :
-#     id = int(request.query_params.get("id"))
-@app.route('/recommend')
-def hello():
-    return 'article recommender sudah siap!'
-
-# @app.get('/recommend/video')
-@app.route('/recommend/video')
-def get_recommendation() :
-    id = int(request.args.get('id'))
+@app.get('/recommend/video')
+def get_recommendation(request: Request) :
+    id = int(request.query_params.get("id"))
     id -= 1
     sim_score = enumerate(cosine_sim[id])
     sim_score = sorted(sim_score, key=lambda x: x[1], reverse=True)
