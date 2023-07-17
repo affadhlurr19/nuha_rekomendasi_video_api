@@ -7,7 +7,7 @@ import requests
 import json
 import pandas as pd
 
-response = requests.get('https://nuha.my.id/api/video')
+response = requests.get('https://nuha.my.id/api/video/allData')
 data = response.text
 parse_json = json.loads(data)
 data_dict = parse_json['data']
